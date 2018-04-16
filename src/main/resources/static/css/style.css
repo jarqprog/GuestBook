@@ -1,0 +1,122 @@
+
+h1 {
+    padding: 1px;
+}
+
+body, html {
+    height: 100%;
+    background: black;
+    color: antiquewhite;
+    text-align: center;
+}
+
+header {
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    background-image: url("../img/bg-main.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+main {
+    width: 100%;
+    min-height: 70%;
+    text-align: justify;
+    display: flex;
+}
+
+
+#form-content {
+    font-size: 100%;
+    text-align: justify;
+    width: 40%;
+    padding: 5px;
+    color: antiquewhite;
+    margin-left: 5%;
+}
+
+#messages {
+    font-size: 100%;
+    margin-left: 20%;
+    width: auto;
+    padding: 5px;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom:0;
+    background-image: url("../img/bg-main.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#whole-page-background {
+
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#logo {
+    font-size: 200%;
+    /*float: left;*/
+    text-align-all: center;
+    padding: auto;
+    text-decoration: none;
+}
+
+.button {
+    /*float:left;*/
+    padding: 10px;
+    text-align: justify;
+    font-size: 130%;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.button:hover {
+    font-size: 120%;
+}
+
+.link {
+    cursor: pointer;
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #ffffff;
+}
+
+#submit {
+    cursor:pointer;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
+    background: transparent;
+    color: antiquewhite;
+    padding: 3px;
+}
+
+input {
+    background: transparent;
+    color: antiquewhite;
+    padding: 3px;
+}
+
+.basic {
+    background: transparent;
+    padding: 5px;
+}
