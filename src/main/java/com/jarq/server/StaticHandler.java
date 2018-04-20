@@ -13,21 +13,22 @@ import java.net.URL;
 
 public class StaticHandler implements HttpHandler {
 
+    public static HttpHandler create() {
+        return new StaticHandler();
+    }
+
+    private StaticHandler() {}
+
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
         // get file path from url
         URI uri = httpExchange.getRequestURI();
-        System.out.println("looking for: " + uri.getPath());
         String path = "." + uri.getPath();
-
-        System.out.println("path: " + path);
 
         // get file from resources folder, see: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
         ClassLoader classLoader = getClass().getClassLoader();
         URL fileURL = classLoader.getResource(path);
-
-        OutputStream os = httpExchange.getResponseBody();
 
         if (fileURL == null) {
             // Object does not exist or is not a file: reject with 404 error.
@@ -36,7 +37,6 @@ public class StaticHandler implements HttpHandler {
             // Object exists and is a file: accept with response code 200.
             sendFile(httpExchange, fileURL);
         }
-
     }
 
     private void send404(HttpExchange httpExchange) throws IOException {

@@ -1,31 +1,40 @@
 package com.jarq.server;
 
 import java.io.IOException;
+
+import com.jarq.controller.IMessageController;
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 
 public class MyServer implements IServer {
 
-    public static IServer create(int port) {
-        return new MyServer(port);
+    private final int port;
+    private final HttpHandler staticHandler;
+    private final HttpHandler mainHandler;
+
+    public static IServer create(int port, HttpHandler staticHandler, HttpHandler mainHandler) {
+        return new MyServer(port, staticHandler, mainHandler);
     }
 
-    private final int PORT;
-
-    private MyServer(int port) {
-        PORT = port;
+    private MyServer(int port, HttpHandler staticHandler, HttpHandler mainHandler) {
+        this.port = port;
+        this.staticHandler = staticHandler;
+        this.mainHandler = mainHandler;
     }
+
 
     @Override
     public void run() throws IOException {
 
-        System.out.println("Starting server using port: " + PORT);
+        System.out.println("Starting server using port: " + port);
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 
         // set routes
-        server.createContext("/static", new StaticHandler());
-        server.createContext("/", new MainHandler());
+        server.createContext("/static", staticHandler);
+        server.createContext("/", mainHandler);
+
         server.setExecutor(null);
 
         // start listening
