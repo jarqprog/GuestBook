@@ -1,6 +1,7 @@
 package com.jarq.server;
 
 import com.jarq.controller.IMessageController;
+import com.jarq.model.Message;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
@@ -31,8 +32,6 @@ public class MainHandler implements HttpHandler {
         System.out.println("uri: " + uri);
 
         if (method.equals("GET")) {
-            System.out.println(method);
-
             renderPage(httpExchange);
         }
 
@@ -52,7 +51,6 @@ public class MainHandler implements HttpHandler {
     }
 
     private void renderPage(HttpExchange httpExchange) throws IOException {
-
 
         JtwigTemplate template = JtwigTemplate.classpathTemplate("/static/main.html");
 
