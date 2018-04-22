@@ -1,24 +1,25 @@
 package com.jarq.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Message {
 
     private int id;
     private String authorName;
     private String content;
-    private LocalDate date;
+    private LocalDateTime date;
 
 
-    public Message(int id, String authorName, String content, LocalDate date) {
-        this(authorName, content, date);
+    public Message(int id, String authorName, String content, LocalDateTime date) {
+        this(authorName, content);
         this.id = id;
+        this.date = date;
     }
 
-    public Message(String authorName, String content, LocalDate date) {
+    public Message(String authorName, String content) {
         this.authorName = authorName;
         this.content = content;
-        this.date = date;
+        this.date = LocalDateTime.now();
     }
 
     public int getId() {
@@ -33,7 +34,7 @@ public class Message {
         return content;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
