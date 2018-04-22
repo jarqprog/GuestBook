@@ -105,3 +105,45 @@ footer {
     font-size: 150%;
     font-weight: bold;
 }
+
+input[type=text],
+input[type=submit],
+textarea[name="messageContent"] {
+    margin-top: 30px;
+    width: 40vh;
+    background-color: black;
+    font-size: 120%;
+    font-weight: bold;
+    color: antiquewhite;
+    text-align: center;
+    padding: 5px 20px 5px 5px;
+    border-radius: 5px;
+    border-color: firebrick;
+}
+
+input[type=submit] {
+    color: grey;
+}
+
+input[type=text]:hover,
+input[type=submit]:hover,
+textarea[name="messageContent"]:hover {
+    color: white;
+    font-weight: bolder;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+textarea[name="messageContent"] {
+    scroll-behavior: auto;
+    min-width: 90vh;
+    min-height: 30vh;
+    font-size: 150%;
+}
+
+.right-form {
+    clear: both;
+    text-align: right;
+    align-content: right;
+    display: block;
+}
