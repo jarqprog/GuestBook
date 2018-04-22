@@ -28,7 +28,7 @@ public class Root implements Client {
     @Override
     public void run() {
 
-        int port = 8080;
+        int port = 8001;
         String databaseDriver = "org.sqlite.JDBC";
         String databaseUrl = "jdbc:sqlite:src/main/resources/db/msg.db";
 
