@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +25,28 @@ public class SQLiteDaoMessage implements IDaoMessage {
     }
 
     @Override
-    public boolean write(List<Message> messages) throws SQLException {
+    public boolean write(Message message) throws SQLException {
+        String guestName = message.getAuthorName();
+        String content = message.getContent();
+        String date = String.valueOf(message.getDate());
 
-        return false;
+        String query = "INSERT INTO messages (guest_name, message, date)" +
+                "VALUES (?, ?, ?);";
+
+        try (
+                Connection connection = databaseManager.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, guestName);
+            preparedStatement.setString(2, content);
+            preparedStatement.setString(3, date);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        }catch (SQLException e){
+            return false;
+        }
     }
 
     @Override
@@ -44,7 +63,7 @@ public class SQLiteDaoMessage implements IDaoMessage {
             int id;
             String guestName;
             String message;
-            LocalDate date;
+            LocalDateTime date;
 
             int ID_INDEX = 1;
             int GUEST_NAME_INDEX = 2;
@@ -56,7 +75,7 @@ public class SQLiteDaoMessage implements IDaoMessage {
                 id = resultSet.getInt(ID_INDEX);
                 guestName = resultSet.getString(GUEST_NAME_INDEX);
                 message = resultSet.getString(MESSAGE_INDEX);
-                date = LocalDate.parse(resultSet.getString(DATE_INDEX));
+                date = LocalDateTime.parse(resultSet.getString(DATE_INDEX));
                 messages.add(new Message(id, guestName, message, date));
             }
         } catch (SQLException ex) {
