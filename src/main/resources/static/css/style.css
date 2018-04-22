@@ -105,3 +105,43 @@ footer {
     font-size: 150%;
     font-weight: bold;
 }
+
+input[type=text],
+input[type=submit],
+textarea[name="messageContent"] {
+    margin-top: 30px;
+    width: 40vh;
+    background-color: firebrick;
+    font-size: 120%;
+    font-weight: bold;
+    color: antiquewhite;
+    text-align: center;
+    padding: 5px 20px 5px 5px;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    color: grey;
+}
+
+input[type=text]:hover,
+input[type=submit]:hover,
+textarea[name="messageContent"]:hover {
+    background-color: maroon;
+    color: white;
+    font-weight: bolder;
+    border-color: firebrick;
+}
+
+textarea[name="messageContent"] {
+    min-height: 45px;
+    scroll-behavior: auto;
+    min-width: 70vh;
+}
+
+.right-form {
+    clear: both;
+    text-align: right;
+    align-content: right;
+    display: block;
+}
