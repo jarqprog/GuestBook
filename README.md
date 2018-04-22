@@ -7,6 +7,4 @@ to compile & run server:
 
     mvn clean package
 
-    java -jar target/guestbook-1.0-SNAPSHOT.jar
-
-
+    java -jar target/guestbook-1.0-SNAPSHOT-jar-with-dependencies.jar

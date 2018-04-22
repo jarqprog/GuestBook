@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GuestBook</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css"/>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+</head>
+<body>
+
+<div id="container">
+
+    <header>
+
+
+        <h1>GuestBook</h1>
+        <nav>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="belt"><span class="big_letters">Guests about us:</span></div>
+
+            {%for message in messages%}
+                <div class="message">
+                {% for element in message %}
+                    <div class="inner">{{ element }}</div>
+                {% endfor %}
+                </div>
+            {%endfor%}
+    </main>
+
+    <footer>COPYRIGHT &copy; 2018 GuestBook by jq</footer>
+
+</div>
+
+</body>
+</html>
