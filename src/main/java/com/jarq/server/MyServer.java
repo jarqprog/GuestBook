@@ -27,7 +27,7 @@ public class MyServer implements IServer {
     @Override
     public void run() throws IOException {
 
-        System.out.println("Starting server using port: " + port);
+        System.out.println("Starting server: http://localhost:" + port);
 
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 

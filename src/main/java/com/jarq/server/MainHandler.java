@@ -24,65 +24,58 @@ public class MainHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         String method = httpExchange.getRequestMethod();
-        System.out.println(method);
+        System.out.println("method: " + method);
+
+
+        String uri = httpExchange.getRequestURI().toString();
+        System.out.println("uri: " + uri);
 
         if (method.equals("GET")) {
             System.out.println(method);
-            String uri = httpExchange.getRequestURI().toString();
-            System.out.println(uri);
-            renderPage(httpExchange);
 
+            renderPage(httpExchange);
         }
 
         if (method.equals("POST")) {
 
-            String uri = httpExchange.getRequestURI().toString();
-            System.out.println("URI: " + uri);
+            renderPage(httpExchange);
             captureData(httpExchange);
-
-
-
 
         }
 
     }
 
-    private void captureData(HttpExchange he) throws IOException {
+    private void captureData(HttpExchange httpExchange) throws IOException {
 
         System.out.println("jestem w capture data");
 
     }
 
-    private void renderPage(HttpExchange he) throws IOException {
-        System.out.println("jestem w render page1");
-        String response;
-        JtwigTemplate template = JtwigTemplate.classpathTemplate(
-                "static/templates/index.html");
-//                "/static/index2.html");
+    private void renderPage(HttpExchange httpExchange) throws IOException {
 
-        System.out.println("ustwaiłem model");
+
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("/static/main.html");
+
+        // create a model that will be passed to a template
         JtwigModel model = JtwigModel.newModel();
-//        model.with("user", "Jarek");
 
-        System.out.println("zaczynam renderować");
-        response = template.render(model);
+        model.with("messages", messageController.getMessages());
 
-        System.out.println("jestem w render page2!!!");
+        // render a template to a string
+        String response = template.render(model);
 
-        executeResponse(he,response);
-
-        System.out.println("wychodzę z render page");
+        sendResponse(httpExchange, response);
     }
 
-    private void executeResponse(HttpExchange he, String response) throws IOException {
+
+    private void sendResponse(HttpExchange httpExchange, String response) throws IOException {
+        // send the results to a the client
         byte[] bytes = response.getBytes();
-        he.sendResponseHeaders(200, bytes.length);
-
-        System.out.println("jestem w executeResponse");
-
-        OutputStream os = he.getResponseBody();
+        httpExchange.sendResponseHeaders(200, bytes.length);
+        OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
+
     }
 
 }
