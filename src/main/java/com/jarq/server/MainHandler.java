@@ -1,7 +1,6 @@
 package com.jarq.server;
 
 import com.jarq.controller.IMessageController;
-import com.jarq.model.Message;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
