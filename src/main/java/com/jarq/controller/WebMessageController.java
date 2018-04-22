@@ -56,14 +56,7 @@ public class WebMessageController implements IMessageController {
     }
 
     @Override
-    public boolean saveMessage(List<String> message) {
-
-        int contentIndex = 0;
-        int guestNameIndex = 1;
-
-        String messageContent = message.get(contentIndex);
-        String guestName = message.get(guestNameIndex);
-
+    public boolean saveMessage(String messageContent, String guestName) {
         try {
             return daoMessage.write(new Message(guestName, messageContent));
         } catch (Exception e) {
