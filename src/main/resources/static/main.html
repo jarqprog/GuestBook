@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuestBook</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css"/>
@@ -9,33 +10,38 @@
 </head>
 <body>
 
-<div id="container">
+<header class="container">
+    <a href="/" target="_top"><div id="title">GuestBook</div></a>
+    <nav>
+        <div class="nav-button">
+            <a href="/" target="_top">Home page</a>
+        </div>
+        <div class="nav-button">
+            <a href="/form" target="_top">Leave us a message</a>
+        </div>
+    </nav>
+</header>
 
-    <header>
-
-
-        <h1>GuestBook</h1>
-        <nav>
-
-        </nav>
-    </header>
-
-    <main>
-
-        <div class="belt"><span class="big_letters">Guests about us:</span></div>
-
-            {%for message in messages%}
-                <div class="message">
-                {% for element in message %}
-                    <div class="inner">{{ element }}</div>
-                {% endfor %}
-                </div>
-            {%endfor%}
-    </main>
-
-    <footer>COPYRIGHT &copy; 2018 GuestBook by jq</footer>
-
+<div class ="container" id="subtitle">
+    <div class="belt">
+        <span class="big_letters">Guests about us:</span>
+    </div>
 </div>
+
+<main class="container">
+        {%for message in messages%}
+            <div class="message">
+            {% for element in message %}
+                <div class="inner-message">{{ element }}</div>
+            {% endfor %}
+            </div>
+        {%endfor%}
+</main>
+
+<footer class="container">
+    <div class="belt">COPYRIGHT &copy; 2018 GuestBook by jq</div>
+</footer>
+
 
 </body>
 </html>
