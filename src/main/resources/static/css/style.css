@@ -3,61 +3,105 @@ h1 {
     font-weight: bold;
 }
 
-body {
-    font-size: 100%;
-    font-family: 'Raleway', sans-serif;
-    color: antiquewhite;
-    background: black;
-}
-
-#container {
-    padding: 2%;
-    width: 95%;
-    height: 95%;
-
-}
-
-header {
-    padding-left: 5%;
-    width: 90%;
-    height: 20%;
+a {
+    text-decoration: none;
     color: firebrick;
 }
 
+body {
+    font-family: 'Raleway', sans-serif;
+    color: antiquewhite;
+    background: black;
+    font-size: 80%;
+    min-width: 400px;
+    min-height: 300px;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+header {
+    min-height: 10vh;
+    display: flex;
+    padding-bottom: 5px;
+}
+
+#title {
+    font-size: 300%;
+    font-weight: bold;
+    float: left;
+    color: white;
+    width: auto;
+}
+
+nav {
+    clear: both;
+    right: 0;
+    width: 300vh;
+}
+
+.nav-button {
+    clear: left;
+    display: block;
+    float: right;
+    text-align: right;
+    font-size: larger;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.nav-button:hover {
+    font-size: large;
+    text-decoration: none;
+}
+
 main {
+    clear: both;
+    max-height: 80vh;
     width: 90%;
-    min-height: 75vh;
-
-    align-content: center;
-
-    text-align: left;
-    padding-left: 5%;
+    text-align: right;
+    overflow-y: auto;
+    overflow-scrolling: auto;
+    margin-bottom: 5px;
 }
 
 .belt {
     background: firebrick;
+    padding: 5px;
 }
 
 footer {
-    width: 90%;
-    height: 15%;
+    clear: both;
+    width: auto;
+    height: 5vh;
     bottom: 0;
+    font-size: 80%;
+    position: absolute;
+    background: black;
+    text-align: center;
+    padding: 15px;
 }
 
+#subtitle {
+    width: 90vh;
+}
 
 .message {
-    padding-top: 1px;
-    border-color: dimgrey;
-    border-style: solid;
-    border-width: 1px;
+    padding-top: 5px;
+    border-bottom-color: firebrick;
+    border-width: 3px;
+    border-bottom-style: double;
 }
 
-.inner {
+.inner-message {
     padding: 3px;
 }
 
-
-
 .big_letters {
-    font-size: 180%;
+    font-size: 150%;
+    font-weight: bold;
 }

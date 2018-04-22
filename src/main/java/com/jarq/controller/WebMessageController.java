@@ -38,8 +38,13 @@ public class WebMessageController implements IMessageController {
 
                 message[messageIndex] = "<span style=\"font-style: italic;\">" + msg.getContent() + "</span>";
                 message[guestIndex] = "<span style=\"font-weight: bold;\"> author: " + msg.getAuthorName() + "</span>";
-                message[dateIndex] = "date: " + String.valueOf(msg.getDate());
-
+                String[] rawDateTime = String.valueOf(msg.getDate()).split("T");
+                int dateIdx = 0;
+                int timeIdx = 1;
+                int numberNanosecondsToRemove = 4;  // removes unnecessary nanoseconds from time
+                String date = rawDateTime[dateIdx];
+                String time = rawDateTime[timeIdx].substring(0, rawDateTime[timeIdx].length()-numberNanosecondsToRemove);
+                message[dateIndex] = "date: " + date + " " + time;
                 messages.add(message);
             }
 
@@ -52,6 +57,18 @@ public class WebMessageController implements IMessageController {
 
     @Override
     public boolean saveMessage(List<String> message) {
-        return false;
+
+        int contentIndex = 0;
+        int guestNameIndex = 1;
+
+        String messageContent = message.get(contentIndex);
+        String guestName = message.get(guestNameIndex);
+
+        try {
+            return daoMessage.write(new Message(guestName, messageContent));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
