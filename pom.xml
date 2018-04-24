@@ -78,7 +78,6 @@
                   <mainClass>com.jarq.App</mainClass>
                 </transformer>
               </transformers>
-
             </configuration>
           </execution>
         </executions>
