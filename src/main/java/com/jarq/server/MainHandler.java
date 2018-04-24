@@ -118,12 +118,10 @@ public class MainHandler implements HttpHandler {
 
     private void sendResponse(HttpExchange httpExchange, String response) throws IOException {
         // send the results to a the client
-        byte[] bytes = response.getBytes();
-        httpExchange.sendResponseHeaders(200, bytes.length);
+        httpExchange.sendResponseHeaders(200, 0);
         OutputStream os = httpExchange.getResponseBody();
-        os.write(response.getBytes());
+        os.write(response.getBytes("UTF-8"));
         os.close();
-
     }
 
     private Map<String,String> getInput(HttpExchange httpExchange) throws IOException {
